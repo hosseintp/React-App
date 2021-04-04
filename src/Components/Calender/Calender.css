@@ -1,0 +1,19 @@
+.cell {
+  background-color: rgb(221, 221, 221);
+  display: grid;
+
+  width: 14.2%;
+  text-align: center;
+  vertical-align: center;
+  height: 70px;
+  align-items: center;
+  align-content: center;
+}
+.container {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+  border-radius: 10px;
+}

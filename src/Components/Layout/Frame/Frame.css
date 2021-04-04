@@ -1,0 +1,11 @@
+.side {
+  color: rgb(190, 190, 190);
+  width: 27%;
+  background-color: rgba(240, 240, 240, 0.856);
+  text-align: left;
+}
+.content {
+  width: 73%;
+  background-color: rgba(240, 240, 240, 0.856);
+  /* border: 2px solid green; */
+}

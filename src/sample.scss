@@ -1,0 +1,17 @@
+//Interpolation Example
+@mixin text-style($name, $bold-or-normal, $size, $color) {
+  #{$name} {
+    font-size: #{$size}px;
+    font-weight: #{$bold-or-normal};
+    color: #{$color};
+  }
+}
+
+@include text-style(".interpolation", bold, 25, blue);
+
+//Function Example
+
+@function invert($color, $amount: 100%) {
+  $inverse: change-color($color, $hue: hue($color) + 180);
+  @return mix($inverse, $color, $amount);
+}
