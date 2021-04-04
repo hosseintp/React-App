@@ -50,7 +50,7 @@ const Side = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const entrDataHandler = () => {
-    setOpen(true);
+    setOpen(false);
   };
   return (
     <div style={{ padding: "15px" }}>
@@ -70,7 +70,7 @@ const Side = (props) => {
         <Button
           variant="contained"
           className={classes.Button}
-          onClick={entrDataHandler}
+          onClick={() => setOpen(true)}
         >
           <Add />
           Add a Task
@@ -107,9 +107,7 @@ const Side = (props) => {
           <Button onClick={() => setOpen(false)} color="default">
             Cancel
           </Button>
-          <Button onClick={() => setOpen(false)} color="default">
-            Confrim
-          </Button>
+          <Button onClick={entrDataHandler}>Confrim</Button>
         </DialogActions>
       </Dialog>
     </div>
