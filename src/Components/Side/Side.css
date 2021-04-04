@@ -1,0 +1,11 @@
+#date {
+  margin-top: 15px;
+}
+#cnl:hover {
+  background-color: rgb(250, 146, 146);
+  transition: all 0.3 ease-in-out;
+}
+#conf:hover {
+  background-color: rgb(163, 214, 163);
+  transition: all 0.3 ease-in-out;
+}

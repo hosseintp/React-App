@@ -2,8 +2,9 @@ import { combineReducers } from "redux";
 import ActionTypes from "./ActionTypes";
 
 let initialState = {
-  counter: 0,
-  name: "",
+  tasks: [],
+  title: "",
+  date: "",
 };
 const ReducerOne = (state = initialState, action) => {
   switch (action.type) {

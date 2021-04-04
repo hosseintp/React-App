@@ -1,20 +1,25 @@
 import React, { useState } from "react";
-import Grid from "@material-ui/core/Grid";
-import Avatar from "@material-ui/core/Avatar";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  Grid,
+  Avatar,
+  Divider,
+  IconButton,
+  Dialog,
+  Button,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  TextField,
+  DialogTitle,
+} from "@material-ui/core/";
 import Person from "@material-ui/icons/Person";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import Button from "@material-ui/core/Button";
-import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/styles";
 import Add from "@material-ui/icons/Add";
-import IconButton from "@material-ui/core/IconButton";
-import Tasks from "./Tasks";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import TextField from "@material-ui/core/TextField";
+import Tasks from "../Tasks";
+
+import "./Side.css";
 
 const useStyles = makeStyles((theme) => ({
   Button: {
@@ -104,10 +109,12 @@ const Side = (props) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpen(false)} color="default">
+          <Button onClick={() => setOpen(false)} color="default" id="cnl">
             Cancel
           </Button>
-          <Button onClick={entrDataHandler}>Confrim</Button>
+          <Button onClick={entrDataHandler} id="conf">
+            Confrim
+          </Button>
         </DialogActions>
       </Dialog>
     </div>
