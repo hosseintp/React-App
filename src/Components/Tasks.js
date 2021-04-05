@@ -21,8 +21,11 @@ const useStyles = makeStyles((theme) => ({
 const Tasks = () => {
   const [value, setValue] = React.useState("female");
   const classes = useStyles();
-  const tasks = useSelector((state) => state.tasks);
 
+  const tasks = [
+    { title: "Meet Jonh", date: "Today" },
+    { title: "Buy a Book", date: "Sat" },
+  ];
   const handleChange = (event) => {
     setValue(event.target.value);
   };

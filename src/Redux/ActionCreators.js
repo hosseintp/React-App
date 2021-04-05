@@ -1,21 +1,20 @@
 import ActionTypes from "./ActionTypes";
-
-const addingTask = () => {
+let initialId = 0;
+export const addingTaskTitle = (content, time) => {
   return {
     type: ActionTypes.ADD_TASK,
-    payload: {},
+    payload: {
+      id: ++initialId,
+      title: content,
+      date: time,
+    },
   };
 };
-const sample1 = () => {
-  return {
-    type: ActionTypes.SAMPLE_TYPE1,
-    payload: {},
-  };
-};
-const sample2 = () => {
-  return {
-    type: ActionTypes.SAMPLE_TYPE2,
-    payload: {},
-  };
-};
-export default { addingTask, sample1, sample2 };
+// export const completed = (id) => {
+//   return {
+//     type: ActionTypes.COMPLETED,
+//     payload: {
+//       id,
+//     },
+//   };
+// };

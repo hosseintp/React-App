@@ -16,11 +16,10 @@ import {
 import Person from "@material-ui/icons/Person";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/styles";
-import Add from "@material-ui/icons/Add";
 import Tasks from "../Tasks";
 
 import "./Side.css";
-
+import AddTask from "../addTask/AddTask";
 const useStyles = makeStyles((theme) => ({
   Button: {
     boxShadow:
@@ -53,10 +52,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Side = (props) => {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const entrDataHandler = () => {
-    setOpen(false);
-  };
+
+  const tasks = useSelector((state) => state.tasks);
+
   return (
     <div style={{ padding: "15px" }}>
       <Grid container spacing={3}>
@@ -72,14 +70,7 @@ const Side = (props) => {
       </Grid>
       <Divider className={classes.Divider} />
       <div className={classes.tasks}>
-        <Button
-          variant="contained"
-          className={classes.Button}
-          onClick={() => setOpen(true)}
-        >
-          <Add />
-          Add a Task
-        </Button>
+        <AddTask open={open} />
         <Tasks />
       </div>
 
@@ -89,7 +80,7 @@ const Side = (props) => {
           <ExpandMore />
         </IconButton>
       </div>
-      <Dialog open={open} onClose={() => setOpen(false)}>
+      {/* <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle id=""></DialogTitle>
         <DialogContent>
           <DialogContentText>Enter Your Task And Date</DialogContentText>
@@ -97,15 +88,15 @@ const Side = (props) => {
             id="title"
             label="Title"
             fullWidth
-            // value={}
-            // onChange={}
+            value={title}
+            onChange={changeHandler}
           />
           <TextField
             id="date"
             label="Date"
             fullWidth
-            // value={}
-            // onChange={}
+            value={date}
+            onChange={changeHandler2}
           />
         </DialogContent>
         <DialogActions>
@@ -116,7 +107,7 @@ const Side = (props) => {
             Confrim
           </Button>
         </DialogActions>
-      </Dialog>
+      </Dialog> */}
     </div>
   );
 };
