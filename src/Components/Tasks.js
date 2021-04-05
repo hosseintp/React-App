@@ -4,15 +4,24 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import { makeStyles } from "@material-ui/styles";
+import { useSelector, useDispatch } from "react-redux";
+
 const useStyles = makeStyles((theme) => ({
+  subdate: {
+    position: "absolute",
+    top: "25%",
+    left: "30px",
+  },
   FormControlLabel: {
     color: "black",
+    position: "relative",
   },
 }));
 
 const Tasks = () => {
   const [value, setValue] = React.useState("female");
   const classes = useStyles();
+  const tasks = useSelector((state) => state.tasks);
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -26,36 +35,21 @@ const Tasks = () => {
         value={value}
         onChange={handleChange}
       >
-        <FormControlLabel
-          value="wireframe"
-          control={<Radio />}
-          label="wireframe for contact page"
-          className={classes.FormControlLabel}
-        />
-        <FormControlLabel
-          value="Book"
-          control={<Radio />}
-          label="Book Return Ticket"
-          className={classes.FormControlLabel}
-        />
-        <FormControlLabel
-          value="Gift"
-          control={<Radio />}
-          label="Buy anniversary Gift"
-          className={classes.FormControlLabel}
-        />
-        <FormControlLabel
-          value="Pay"
-          control={<Radio />}
-          label="Pay Electricity Bill"
-          className={classes.FormControlLabel}
-        />
-        <FormControlLabel
-          value="Meet"
-          control={<Radio />}
-          label="Meet Chris in the Confrence"
-          className={classes.FormControlLabel}
-        />
+        {tasks.map((task, index) => {
+          return (
+            <>
+              <FormControlLabel
+                key={index + 1}
+                value={task.title}
+                control={<Radio />}
+                label={task.title}
+                date={task.date}
+                className={classes.FormControlLabel}
+              />
+              <span>{task.date}</span>
+            </>
+          );
+        })}
       </RadioGroup>
     </FormControl>
   );
