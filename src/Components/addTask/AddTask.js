@@ -8,15 +8,14 @@ import {
   DialogContent,
   DialogContentText,
   TextField,
-  DialogTitle,
 } from "@material-ui/core/";
 import Add from "@material-ui/icons/Add";
 
 class AddTask extends Component {
   state = {
     isOpen: false,
-    date: "",
     title: "",
+    date: "",
   };
 
   valueChangeHandler = (event) => {
@@ -43,7 +42,6 @@ class AddTask extends Component {
           open={this.state.isOpen}
           onClose={() => this.setState({ isOpen: false })}
         >
-          <DialogTitle id=""></DialogTitle>
           <DialogContent>
             <DialogContentText>Enter Your Task And Date</DialogContentText>
             <TextField

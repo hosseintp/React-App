@@ -2,6 +2,7 @@ import ActionTypes from "./ActionTypes";
 
 const initialState = {
   tasks: [],
+  complist: [],
 };
 const Reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -12,14 +13,29 @@ const Reducer = (state = initialState, action) => {
           ...state.tasks,
           {
             id: action.payload.id,
-            title: action.payload.content,
-            date: action.payload.time,
+            title: action.payload.title,
+            date: action.payload.date,
             complete: false,
           },
         ],
       };
     case ActionTypes.COMPLETED:
-      return { ...state };
+      const { id } = action.payload;
+      return {
+        ...state,
+        tasks: state.tasks.map((task) => {
+          if (task.id === id) {
+            return {
+              id: task.id,
+              title: task.title,
+              date: task.date,
+              complete: !task.complete,
+            };
+          } else {
+            return task;
+          }
+        }),
+      };
     default:
       return state;
   }

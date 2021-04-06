@@ -1,32 +1,12 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  Grid,
-  Avatar,
-  Divider,
-  IconButton,
-  Dialog,
-  Button,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  TextField,
-  DialogTitle,
-} from "@material-ui/core/";
+import React from "react";
+import { Grid, Avatar, Divider, IconButton } from "@material-ui/core/";
 import Person from "@material-ui/icons/Person";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/styles";
-import Tasks from "../Tasks";
-
 import "./Side.css";
 import AddTask from "../addTask/AddTask";
+import TaskList from "../TaskList/TaskList";
 const useStyles = makeStyles((theme) => ({
-  Button: {
-    boxShadow:
-      "0 2px 1px rgba(0,0,0,0.09), 1px 4px 2px rgba(0,0,0,0.09), 2px 8px 4px rgba(0,0,0,0.09), 3px 16px 8px rgba(0,0,0,0.09),4px 32px 16px rgba(0,0,0,0.09)",
-    margin: "15px",
-    color: "black",
-  },
   Divider: {
     marginTop: "20px",
   },
@@ -35,6 +15,8 @@ const useStyles = makeStyles((theme) => ({
     boxShadow:
       "0 2px 1px rgba(0,0,0,0.09), 1px 4px 2px rgba(0,0,0,0.09), 2px 8px 4px rgba(0,0,0,0.09), 3px 16px 8px rgba(0,0,0,0.09),4px 32px 16px rgba(0,0,0,0.09)",
     padding: "8px",
+    overflowY: "scroll",
+    height: "350px",
   },
   completed: {
     display: "flex",
@@ -53,8 +35,6 @@ const useStyles = makeStyles((theme) => ({
 const Side = (props) => {
   const classes = useStyles();
 
-  const tasks = useSelector((state) => state.tasks);
-
   return (
     <div style={{ padding: "15px" }}>
       <Grid container spacing={3}>
@@ -70,8 +50,8 @@ const Side = (props) => {
       </Grid>
       <Divider className={classes.Divider} />
       <div className={classes.tasks}>
-        <AddTask open={open} />
-        <Tasks />
+        <AddTask />
+        <TaskList />
       </div>
 
       <div className={classes.completed}>
@@ -80,34 +60,6 @@ const Side = (props) => {
           <ExpandMore />
         </IconButton>
       </div>
-      {/* <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle id=""></DialogTitle>
-        <DialogContent>
-          <DialogContentText>Enter Your Task And Date</DialogContentText>
-          <TextField
-            id="title"
-            label="Title"
-            fullWidth
-            value={title}
-            onChange={changeHandler}
-          />
-          <TextField
-            id="date"
-            label="Date"
-            fullWidth
-            value={date}
-            onChange={changeHandler2}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setOpen(false)} color="default" id="cnl">
-            Cancel
-          </Button>
-          <Button onClick={entrDataHandler} id="conf">
-            Confrim
-          </Button>
-        </DialogActions>
-      </Dialog> */}
     </div>
   );
 };

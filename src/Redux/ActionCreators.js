@@ -10,11 +10,11 @@ export const addingTaskTitle = (content, time) => {
     },
   };
 };
-// export const completed = (id) => {
-//   return {
-//     type: ActionTypes.COMPLETED,
-//     payload: {
-//       id,
-//     },
-//   };
-// };
+export const toggle = (id) => {
+  return {
+    type: ActionTypes.COMPLETED,
+    payload: {
+      id,
+    },
+  };
+};
